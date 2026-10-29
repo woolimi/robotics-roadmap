@@ -2,6 +2,7 @@ import type { Root } from 'hast'
 import { BookOpen, Check, ChevronRight, CornerUpLeft, History, ListChecks, X } from './icons'
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { CONFIG } from '../config'
+import { keepOpenOnEscape } from './dialog'
 import { hasQuiz, loadBank } from '../curriculum/load'
 import { progress } from '../curriculum/progress'
 import {
@@ -233,10 +234,8 @@ function QuizDialog({ kicker, onClose, top, children, foot }: { kicker: string; 
       ref={dialogRef}
       className="quiz-dialog"
       aria-labelledby="quiz-heading"
-      onCancel={(e) => {
-        e.preventDefault()
-        onClose()
-      }}
+      onKeyDown={keepOpenOnEscape}
+      onCancel={(e) => e.preventDefault()}
     >
       <header className="quiz-head">
         <p className="quiz-kicker">{kicker}</p>

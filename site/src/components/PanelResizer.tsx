@@ -61,7 +61,7 @@ export function PanelResizer({ panel, onDragging }: Props) {
   // `last` is the width from the latest pointermove; React only hears about it when the pointer is released
   const drag = useRef<{ x: number; width: number; last: number; app: HTMLElement; frame: number } | null>(null)
 
-  // the panel can close mid-drag (Esc, or the window turning narrow) and no pointerup reaches us then
+  // the panel can close mid-drag (the window turning narrow) and no pointerup reaches us then
   useEffect(() => () => onDragging(false), [onDragging])
 
   const endDrag = () => {

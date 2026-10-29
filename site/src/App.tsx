@@ -69,14 +69,6 @@ export function App() {
     setSelectedId(null)
   }, [])
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && selectedId && !showIntro) close()
-    }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [selectedId, showIntro, close])
-
   const closeIntro = useCallback(() => {
     try {
       localStorage.setItem(CONFIG.storage.introSeenKey, '1')

@@ -1,6 +1,7 @@
 import { X } from './icons'
 import { useEffect, useRef } from 'react'
 import { CONFIG } from '../config'
+import { keepOpenOnEscape } from './dialog'
 
 interface Props {
   firstLessonId: string
@@ -15,16 +16,10 @@ export function Intro({ firstLessonId, lessonCount, onClose, onStart }: Props) {
   useEffect(() => {
     const d = dialogRef.current!
     if (!d.open) d.showModal()
-    const onCancel = (e: Event) => {
-      e.preventDefault()
-      onClose()
-    }
-    d.addEventListener('cancel', onCancel)
-    return () => d.removeEventListener('cancel', onCancel)
-  }, [onClose])
+  }, [])
 
   return (
-    <dialog ref={dialogRef} className="intro" aria-labelledby="intro-title">
+    <dialog ref={dialogRef} className="intro" aria-labelledby="intro-title" onKeyDown={keepOpenOnEscape} onCancel={(e) => e.preventDefault()}>
       <button type="button" className="icon-button intro-close" onClick={onClose} aria-label="안내 닫기">
         <X size={20} aria-hidden="true" />
       </button>
