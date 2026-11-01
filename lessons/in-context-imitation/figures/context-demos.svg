@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif">
+  <title>시연 수에 따른 새 물체 성공률. 시연과 모양이 다른 물체로 과제 4 개를 10 번씩 시험한 평균이 시연 1 개 40%, 2 개 52.5%, 3 개 85%, 4 개 90% 로 오른다. 오른쪽은 시연을 waypoint 1 개로 줄이면 −71%p, 5 개면 −26%p, 15 개면 +1%p 로 기본 10 개와 비교한 변화다</title>
+  <defs><marker id="arrow-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/></marker><marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7cb4d8"/></marker><marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7fc4a2"/></marker><marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d6aa62"/></marker><marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d88b8b"/></marker><marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a99ad6"/></marker><marker id="arrow-text" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e2e8f0"/></marker><marker id="arrow-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#cf96b8"/></marker></defs>
+  <rect x="1" y="1" width="758" height="328" rx="12" fill="#0b1220" stroke="#1e293b"/>
+  <text x="30.0" y="34.0" fill="#7fc4a2" font-size="13" text-anchor="start" font-weight="600">새 물체의 평균 성공률 (논문 표 4)</text>
+  <line x1="60" y1="270" x2="360" y2="270" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="60" y1="270.0" x2="360" y2="270.0" stroke="#1e293b" stroke-width="1"/>
+  <text x="54.0" y="274.0" fill="#94a3b8" font-size="11" text-anchor="end">0%</text>
+  <line x1="60" y1="170.0" x2="360" y2="170.0" stroke="#1e293b" stroke-width="1"/>
+  <text x="54.0" y="174.0" fill="#94a3b8" font-size="11" text-anchor="end">50%</text>
+  <line x1="60" y1="70.0" x2="360" y2="70.0" stroke="#1e293b" stroke-width="1"/>
+  <text x="54.0" y="74.0" fill="#94a3b8" font-size="11" text-anchor="end">100%</text>
+  <rect x="80" y="190.0" width="46" height="80.0" fill="#7fc4a2" fill-opacity="0.75"/>
+  <text x="103.0" y="182.0" fill="#e2e8f0" font-size="12" text-anchor="middle">40%</text>
+  <text x="103.0" y="288.0" fill="#94a3b8" font-size="11" text-anchor="middle">시연 1 개</text>
+  <rect x="150" y="165.0" width="46" height="105.0" fill="#7fc4a2" fill-opacity="0.75"/>
+  <text x="173.0" y="157.0" fill="#e2e8f0" font-size="12" text-anchor="middle">52.5%</text>
+  <text x="173.0" y="288.0" fill="#94a3b8" font-size="11" text-anchor="middle">시연 2 개</text>
+  <rect x="220" y="100.0" width="46" height="170.0" fill="#7fc4a2" fill-opacity="0.75"/>
+  <text x="243.0" y="92.0" fill="#e2e8f0" font-size="12" text-anchor="middle">85%</text>
+  <text x="243.0" y="288.0" fill="#94a3b8" font-size="11" text-anchor="middle">시연 3 개</text>
+  <rect x="290" y="90.0" width="46" height="180.0" fill="#7fc4a2" fill-opacity="0.75"/>
+  <text x="313.0" y="82.0" fill="#e2e8f0" font-size="12" text-anchor="middle">90%</text>
+  <text x="313.0" y="288.0" fill="#94a3b8" font-size="11" text-anchor="middle">시연 4 개</text>
+  <text x="190.0" y="312.0" fill="#94a3b8" font-size="11" text-anchor="middle">과제 4 개 × 10 번 · 시연과 다른 모양의 물체</text>
+  <text x="420.0" y="34.0" fill="#d6aa62" font-size="13" text-anchor="start" font-weight="600">시연의 waypoint 수 L 에 따른 변화 (논문 표 2)</text>
+  <line x1="650" y1="56" x2="650" y2="270" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="650.0" y="290.0" fill="#94a3b8" font-size="11" text-anchor="middle">0 (기본 L = 10)</text>
+  <rect x="479.6" y="70" width="170.4" height="30" fill="#d88b8b" fill-opacity="0.75"/>
+  <text x="430.0" y="90.0" fill="#e2e8f0" font-size="12" text-anchor="start">L = 1</text>
+  <text x="658.0" y="90.0" fill="#e2e8f0" font-size="12" text-anchor="start">−71%p</text>
+  <rect x="587.6" y="120" width="62.4" height="30" fill="#d88b8b" fill-opacity="0.75"/>
+  <text x="430.0" y="140.0" fill="#e2e8f0" font-size="12" text-anchor="start">L = 5</text>
+  <text x="658.0" y="140.0" fill="#e2e8f0" font-size="12" text-anchor="start">−26%p</text>
+  <text x="430.0" y="190.0" fill="#e2e8f0" font-size="12" text-anchor="start">L = 10</text>
+  <text x="658.0" y="190.0" fill="#e2e8f0" font-size="12" text-anchor="start">0</text>
+  <rect x="650.0" y="220" width="2.4" height="30" fill="#7fc4a2" fill-opacity="0.75"/>
+  <text x="430.0" y="240.0" fill="#e2e8f0" font-size="12" text-anchor="start">L = 15</text>
+  <text x="660.4" y="240.0" fill="#e2e8f0" font-size="12" text-anchor="start">+1%p</text>
+  <text x="580.0" y="312.0" fill="#94a3b8" font-size="11" text-anchor="middle">학습에 쓰지 않은 RLBench 과제 24 개의 평균 성공률 변화</text>
+</svg>

@@ -1,0 +1,333 @@
+# 강의 퀴즈. topic 하나가 한 문항이고, 다시 풀면 지난 회차의 다음 variant 를 낸다.
+# answer 는 choices 의 0부터 센 번호다.
+
+- topic: icil-vs-post-training
+  title: post-training 과 in-context imitation learning
+  section: in-context-learning
+  variants:
+    - question: |
+        로봇에게 새 과제를 가르칠 때, 과제마다 하는 post-training 과 in-context imitation learning 은 무엇이 다른가?
+      choices:
+        - 'post-training 은 시연을 입력으로만 넣고, in-context imitation learning 은 그 시연으로 과제마다 weight 를 새로 고친다'
+        - 'post-training 은 새 과제의 시연으로 weight 를 고치고, in-context imitation learning 은 weight 를 고정한 채 시연을 입력으로 넣는다'
+        - '둘 다 새 과제의 시연으로 weight 를 고치지만, in-context imitation learning 은 시연이 적어서 학습이 몇 분 만에 끝난다'
+        - '둘 다 weight 를 고치지 않지만, post-training 은 시연 대신 지시문을 입력으로 넣어 새 과제를 알려 준다는 점이 다르다'
+      answer: 1
+      explanation: |
+        post-training 은 새 과제의 (관측, action) 쌍을 정답으로 삼아 weight 를 고치므로 과제마다 시연 수집과 학습이 필요하다. in-context
+        imitation learning 은 한 번 학습한 weight 를 고정해 두고, 새 과제의 시연을 현재 관측과 함께 입력으로 넣어 바로 action 을 낸다. 첫 보기는
+        두 방식을 거꾸로 적었다. in-context imitation learning 은 실행할 때 학습 단계가 전혀 없으므로 "학습이 몇 분 만에 끝난다" 도 틀렸다.
+        post-training 은 시연으로 weight 를 고치는 방식이고, 지시문을 넣는 방식이 아니다.
+    - question: |
+        in-context imitation learning 모델에 새 과제의 시연 2 개를 넣고 바로 실행했다. 이때 모델의 weight 에는 어떤 일이 일어나는가?
+      choices:
+        - '시연 2 개로 gradient 를 몇 번 계산해서, weight 를 새 과제 쪽으로 조금씩 옮긴 뒤 실행한다'
+        - '시연에서 뽑은 숫자를 weight 의 일부에 덮어써서, 새 과제의 정보를 weight 안에 저장해 둔다'
+        - '시연을 넣을 때마다 weight 를 처음 상태로 되돌리고, 그 시연만으로 짧게 다시 학습한다'
+        - 'weight 는 그대로이고, 시연은 현재 관측과 함께 network 의 입력으로만 쓰인다'
+      answer: 3
+      explanation: |
+        in-context imitation learning 은 실행할 때 weight 를 고치지 않는다. 시연은 network 의 입력(context)으로 들어가고, network 는 시연과
+        현재 관측을 함께 읽어 action 을 낸다. gradient 로 weight 를 옮기는 것은 fine-tuning 이고, weight 를 덮어쓰거나 되돌려 다시 학습하는 과정도
+        없다. 과제 정보는 weight 가 아니라 입력에만 있다.
+    - question: |
+        과제 10 개를 로봇에 가르쳐야 한다. 과제마다 post-training 하는 방식과 비교해 in-context imitation learning 이 줄이는 것은 무엇인가?
+      choices:
+        - '과제마다 시연을 수십 개씩 모으고 weight 를 다시 학습하는 시간, 그리고 그동안 로봇이 기다리는 시간'
+        - '처음 모델을 학습할 때 드는 데이터의 양, 과제 하나의 시연만 있으면 시연을 읽는 법을 배울 수 있어서'
+        - '실행할 때 network 를 쓰는 계산, 시연을 입력으로 넣지 않으니 network 가 읽을 정보가 줄어들어서'
+        - '실행할 때 필요한 카메라의 수, 시연이 장면 정보를 대신 알려 주니 관측을 덜 찍어도 되어서'
+      answer: 0
+      explanation: |
+        post-training 은 과제마다 시연을 모아 weight 를 다시 학습하므로 과제 수에 비례해 시연과 학습 시간이 는다. in-context imitation learning 은
+        시연 1 ~ 2 개를 입력에 넣자마자 실행하므로 이 시간이 사라진다. 대신 처음 학습에는 서로 다른 과제가 아주 많은 데이터가 필요해서 데이터가
+        줄지 않는다. 실행할 때는 시연까지 입력으로 읽으므로 계산이 오히려 늘고, 현재 관측은 여전히 카메라로 찍어야 한다.
+
+- topic: meta-learning
+  title: 시연을 읽는 법의 학습
+  section: in-context-learning
+  variants:
+    - question: |
+        in-context imitation learning 모델의 weight 에 담겨야 하는 것은 무엇인가?
+      choices:
+        - '학습에 쓴 과제 하나하나의 action 규칙, 실행 때 가장 비슷한 과제를 찾아 꺼내 쓰기 위해서'
+        - '실행할 과제의 물체 모양과 위치, 시연 없이도 장면의 물체를 바로 알아볼 수 있도록 하기 위해서'
+        - '시연을 읽고 지금 해야 할 action 을 알아내는 법, 어떤 과제가 와도 시연으로 알 수 있게'
+        - '사람이 쓰는 지시문의 뜻, 들어온 시연을 지시문으로 바꿔 과제를 이해하기 위해서'
+      answer: 2
+      explanation: |
+        과제 정보는 실행할 때 넣는 시연에 있으므로, weight 에는 특정 과제가 아니라 시연을 보고 지금 할 action 을 알아내는 법이 들어 있어야 한다.
+        과제별 규칙을 저장해 두고 찾아 쓰는 구조가 아니며, 실행할 과제의 물체는 학습 때 알 수 없다. 시연을 지시문으로 바꾸는 과정도 없다.
+    - question: |
+        in-context imitation learning 의 학습을 meta-learning 이라고 부르는 이유는 무엇인가?
+      choices:
+        - '여러 로봇의 데이터를 섞어 학습해서, 로봇 한 대가 아니라 여러 로봇의 동작을 함께 배우기 때문이다'
+        - 'weight 를 고치는 network 와 action 을 내는 network 를 따로 두고 번갈아 가며 학습하기 때문이다'
+        - '학습이 끝난 뒤에도 실행하면서 얻은 데이터로 weight 를 계속 고쳐 성능을 올려 가기 때문이다'
+        - '과제를 푸는 법 대신 시연을 보고 새 과제를 배우는 법을 익히도록 weight 를 고치기 때문이다'
+      answer: 3
+      explanation: |
+        meta-learning 은 과제를 푸는 법이 아니라 과제를 배우는 법을 학습하는 것이다. in-context imitation learning 의 학습 예시는 예시마다
+        과제가 달라서, 한 과제를 외우는 것으로는 loss 가 줄지 않고 context 의 시연을 읽어야만 줄어든다. 여러 로봇의 데이터를 섞는 것은
+        meta-learning 의 이유가 아니고, network 둘을 번갈아 학습하거나 실행 중에 weight 를 고치는 과정은 없다.
+    - question: |
+        in-context imitation learning 모델을 학습하려면 어떤 데이터가 있어야 하는가?
+      choices:
+        - '서로 다른 과제가 아주 많고, 과제마다 같은 일을 한 시연이 여러 개씩 있는 데이터'
+        - '과제 하나를 여러 자세에서 수천 번 반복한 시연, 그 과제의 동작을 빈틈없이 담은 데이터'
+        - '시연 없이 과제마다 성공했는지만 적어 둔 기록, 보상만으로 시연 읽는 법을 배우는 데이터'
+        - '지시문과 이미지의 쌍, 시연을 지시문으로 바꾸는 법을 먼저 배워 두어야 하는 데이터'
+      answer: 0
+      explanation: |
+        시연을 읽는 법을 배우려면 학습 예시마다 과제가 달라야 하고, 한 과제 안에 시연이 여러 개 있어야 그중 일부를 context 로, 나머지를
+        정답으로 쓸 수 있다. 과제 하나의 시연만 많으면 그 과제를 외우게 된다. 보상만 있는 기록에는 context 로 넣을 시연이 없고, 지시문
+        데이터는 시연을 읽는 법과 관계없다.
+
+- topic: graph-representation
+  title: 시연·관측·action 의 graph
+  section: 시연을-읽는-graph
+  variants:
+    - question: |
+        Instant Policy 는 앞으로 실행할 action 을 graph 안에서 어떻게 나타내는가?
+      choices:
+        - 'action 의 숫자 여러 개를 feature 로 가진 node 하나를 새로 만들어서, graph 의 맨 끝에 따로 붙여 둔다'
+        - '물체 node 를 action 만큼 옮겨 놓아서, 물체가 움직인 결과로 action 을 나타낸다'
+        - 'action 을 실행했을 때 gripper 가 놓일 자리로 gripper node 를 옮긴 local graph 로 나타낸다'
+        - 'action 은 graph 에 넣지 않고, graph 를 다 읽은 뒤 별도의 network 가 숫자로 낸다'
+      answer: 2
+      explanation: |
+        Instant Policy 는 action 을 실행했을 때 gripper 가 놓일 자리에 gripper node 를 옮겨 놓은 local graph 로 action 을 나타낸다. 그래서
+        관측과 action 이 같은 graph 공간에 놓이고, action 을 만드는 일이 action 의 gripper node 위치를 정하는 일이 된다. action 숫자를 담은
+        node 하나를 붙이는 방식이 아니고, 움직이는 것은 물체 node 가 아니라 gripper node 다. action 은 graph 안의 node 위치로 정해진다.
+    - question: |
+        Instant Policy 의 graph 는 edge 에 절대 위치 대신 두 node 의 상대 위치만 붙인다. 이렇게 하면 무엇이 좋은가?
+      choices:
+        - '물체가 시연과 다른 자리에 놓여도 gripper 와 물체의 관계가 같으면 같은 숫자로 읽힌다'
+        - '카메라 calibration 이 필요 없어져서, point cloud 를 얻지 않고 사진만으로도 실행할 수 있다'
+        - '상대 위치는 숫자가 작아서 network 의 계산이 빨라지고, GPU 메모리를 훨씬 덜 쓰게 된다'
+        - 'graph 의 node 수가 절반으로 줄어서, 같은 메모리로 시연을 두 배 더 넣을 수 있게 된다'
+      answer: 0
+      explanation: |
+        상대 위치는 물체가 어디에 놓였든 gripper 와 물체의 관계로만 정해진다. 시연에서 손잡이의 3 cm 위에 있던 gripper 와 실행 때 다른 자리의
+        손잡이 3 cm 위에 있는 gripper 는 같은 숫자로 읽혀서, 같은 단계로 인식된다. 상대 위치를 써도 point cloud 는 필요하고, 계산 속도나
+        node 수는 상대 위치를 쓰는지와 관계가 없다.
+    - question: |
+        시연의 gripper node 마다 현재 gripper node 로 선을 잇는 graph 가 있다. 시연 수를 2 배로 늘리면 이 선의 수는 어떻게 되는가?
+      choices:
+        - '시연 수의 제곱에 비례해 약 4 배가 되고, 모든 node 를 서로 이어도 똑같이 4 배가 된다'
+        - '시연 수와 상관없이 현재 gripper node 의 수로만 정해지므로 바뀌지 않고 그대로다'
+        - '연결 수는 그대로이고, 늘어난 시연의 정보는 기존 연결 위에 나눠서 함께 실린다'
+        - '시연 수에 비례해 약 2 배가 되고, 모든 node 를 이으면 node 수의 제곱에 가깝게 는다'
+      answer: 3
+      explanation: |
+        시연의 gripper node 수는 시연 수 × waypoint 수 × 6 이라서 시연 수에 비례하고, 그 node 마다 현재 gripper node 로 선을 이으므로 선의 수도
+        시연 수에 비례해 2 배가 된다. 모든 node 를 서로 이으면 짝의 수가 node 수의 제곱에 가깝게 늘어난다. 선은 node 마다 따로 있으므로
+        시연이 늘면 선도 함께 는다.
+
+- topic: graph-attention
+  title: graph transformer 의 attention
+  section: graph-transformer
+  variants:
+    - question: |
+        graph transformer 에서 현재 gripper node 가 이웃 node 셋에 점수 2.0, 0.5, 0 을 매겼다. 세 이웃의 정보를 섞는 비율에 대한 설명으로
+        옳은 것은?
+      choices:
+        - '점수를 합 2.5 로 나눠 0.8, 0.2, 0 으로 섞어서, 점수가 0 인 node 의 정보는 전혀 가져오지 않는다'
+        - 'softmax 로 비율을 정해 점수가 높은 node 의 정보를 가장 많이 가져오고, 점수 0 인 node 도 조금 가져온다'
+        - '점수가 가장 높은 node 하나만 골라 그 정보를 그대로 가져오고, 나머지 두 node 의 정보는 버린다'
+        - '점수와 상관없이 세 node 를 3 분의 1 씩 똑같이 섞고, 점수는 학습할 때 loss 를 계산하는 데만 쓴다'
+      answer: 1
+      explanation: |
+        점수는 softmax 를 지나 $e^{\text{점수}}$ 에 비례하는 비율이 된다. $e^2, e^{0.5}, e^0$ 은 7.389, 1.649, 1.000 이라서 비율은 약 0.74, 0.16,
+        0.10 이고, 점수가 0 이어도 비율은 0 이 아니다. 점수를 합으로 나누는 방식이 아니며, 하나만 고르거나 똑같이 섞지도 않는다.
+    - question: |
+        Instant Policy 는 node 와 edge 의 종류마다 다른 weight 를 쓰는 heterogeneous graph 를 쓴다. 논문이 이 선택의 근거로 밝힌 것은 무엇인가?
+      choices:
+        - '종류마다 weight 를 나누면 parameter 수가 크게 줄어서, 작은 GPU 에서도 학습할 수 있었다'
+        - '모든 종류에 같은 weight 를 쓰면 graph 의 node 수가 늘어나서 메모리가 모자랐다'
+        - '종류마다 weight 를 나누면 denoising 을 1 단계로 줄여도 성공률이 그대로 유지됐다'
+        - '같은 parameter 수에서 모든 종류에 같은 weight 를 쓰고 종류 표시만 붙인 graph 가 훨씬 나빴다'
+      answer: 3
+      explanation: |
+        저자들은 모든 node·edge 에 같은 weight 를 쓰고 종류를 나타내는 표시만 붙인 graph 를 시험했는데, 같은 parameter 수에서 결과가 훨씬
+        나빴다. 종류마다 weight 를 나누면 각 부분이 자기 정보를 모으는 데 집중할 수 있다. 비교는 같은 parameter 수에서 했으므로 parameter 나
+        메모리를 줄이려는 선택이 아니었고, denoising 을 1 단계로 줄이면 성공률이 떨어졌다.
+    - question: |
+        graph transformer 의 attention 이 일반 Transformer 의 self-attention 과 다른 점으로 옳은 것은?
+      choices:
+        - 'softmax 대신 점수를 그대로 비율로 쓰고, query·key·value 를 나누지 않고 feature 하나로 계산한다'
+        - '모든 token 쌍 대신 edge 로 이어진 이웃만 보고, 점수와 섞는 값에 edge 의 상대 위치를 넣는다'
+        - '모든 node 를 보지만 거리가 먼 node 의 점수를 0 으로 고정해서, 가까운 node 만 섞이게 한다'
+        - 'edge 의 상대 위치만 보고 node 의 feature 는 쓰지 않아서, 물체의 모양 정보는 무시하고 계산한다'
+      answer: 1
+      explanation: |
+        graph transformer 는 graph 의 edge 로 들어오는 이웃만 보고, key 와 value 에 edge 의 상대 위치를 더해 점수와 섞는 값을 정한다. 그래서
+        계산량이 모든 쌍을 보는 Transformer 와 달리 연결 수에 비례한다. softmax 와 query·key·value 는 그대로 쓰며, 거리로 점수를 0 으로 고정하는
+        규칙은 없다. node 의 feature 에는 물체 모양이 담겨 있어 함께 쓴다.
+
+- topic: graph-diffusion
+  title: graph 위의 diffusion 과 SVD
+  section: graph-위의-diffusion
+  variants:
+    - question: |
+        Instant Policy 가 action 을 network 가 바로 맞히게(regression) 하지 않고 diffusion 으로 만드는 이유는 무엇인가?
+      choices:
+        - 'diffusion 은 network 를 한 번만 써서, regression 보다 action 을 훨씬 빨리 만들어 내기 때문이다'
+        - 'regression 은 graph 를 입력으로 받을 수 없어서, graph 를 쓰려면 diffusion 만 가능하기 때문이다'
+        - '한 장면에 맞는 action 이 여럿일 때 regression 은 그 평균을 내서 어느 쪽도 아닌 action 을 내기 때문이다'
+        - 'diffusion 을 쓰면 시연 없이도 action 을 만들 수 있어서, 실행할 때 context 가 필요 없기 때문이다'
+      answer: 2
+      explanation: |
+        정답이 여럿인 장면에서 차이의 제곱을 줄이는 regression 은 정답들의 평균을 낸다. diffusion 은 noise 에서 출발해 정답 하나 쪽으로
+        걷어 내므로 이 평균을 피한다. 논문에서 diffusion 을 빼고 바로 맞히게 한 모델은 평균 성공률이 크게 떨어졌다. diffusion 은 network 를
+        여러 번 쓰므로 더 느리고, regression 도 graph 를 입력으로 받을 수 있으며, diffusion 을 써도 시연은 필요하다.
+    - question: |
+        Instant Policy 는 node 마다 예측한 움직임으로 gripper node 를 옮긴 뒤 SVD 로 회전과 평행 이동 하나를 구한다. 이 과정이 필요한 이유는?
+      section: svd-로-맞추는-gripper-자세
+      choices:
+        - 'SVD 가 noise 를 만드는 계산이라서, diffusion 의 다음 단계에 섞을 새 noise 를 얻기 위해서다'
+        - 'node 별 예측이 서로 어긋나도 gripper 가 휘지 않는 물체로 움직이도록 자세를 맞추기 위해서다'
+        - 'node 6 개의 움직임을 모아 보면 gripper 가 열렸는지 닫혔는지를 알 수 있기 때문이다'
+        - '회전과 평행 이동을 구하면 남은 denoising 단계를 건너뛰고 바로 마지막 action 을 얻기 때문이다'
+      answer: 1
+      explanation: |
+        gripper 의 자세는 위치와 방향의 숫자 6 개로 정해지지만 node 6 개의 위치는 숫자가 18 개라서, node 마다 따로 예측하면 gripper 모양이
+        찌그러질 수 있다. SVD 로 옮기기 전과 후를 가장 잘 맞추는 회전과 평행 이동 하나를 구하면 휘지 않는 gripper 의 움직임이 된다. SVD 는
+        noise 를 만들지 않고, 열림·닫힘은 따로 고치며, 단계를 건너뛰게 해 주지도 않는다.
+    - question: |
+        평면 위 gripper node 3 개에 network 가 오른쪽으로 0.7, 0.5, 0.6 cm 움직이라고 예측했고, 위아래 움직임은 없으며 가장 잘 맞는 회전은
+        0° 였다. SVD 로 맞춘 움직임은 무엇인가?
+      section: svd-로-맞추는-gripper-자세
+      choices:
+        - '가장 크게 예측한 0.7 cm 만큼 세 node 를 모두 오른쪽으로 옮긴다'
+        - '예측대로 세 node 를 0.7, 0.5, 0.6 cm 씩 따로 오른쪽으로 옮긴다'
+        - '예측이 서로 달라 믿을 수 없으므로 이번 단계에는 움직이지 않는다'
+        - '세 예측의 평균인 0.6 cm 만큼 세 node 를 모두 오른쪽으로 옮긴다'
+      answer: 3
+      explanation: |
+        회전이 0° 이면 옮기기 전과 후를 가장 잘 맞추는 평행 이동은 예측한 움직임의 평균이라 $(0.7 + 0.5 + 0.6) \div 3 = 0.6$ cm 다. 세 node 가
+        모두 0.6 cm 씩 움직이므로 gripper 의 모양이 그대로 남는다. 가장 큰 값을 쓰거나 node 마다 따로 옮기면 강체 움직임이 아니거나 최선이
+        아니고, 예측이 어긋난다고 움직임을 버리지 않는다.
+
+- topic: pseudo-demonstration
+  title: pseudo-demonstration
+  section: pseudo-demonstration
+  variants:
+    - question: |
+        Instant Policy 가 학습에 쓴 pseudo-demonstration 에 대한 설명으로 옳은 것은 무엇인가?
+      choices:
+        - '실행할 benchmark 과제를 simulation 으로 그대로 옮겨 만든 시연이라서, 시험할 과제와 똑같은 동작을 담는다'
+        - '물체 기준으로 정한 waypoint 를 따라가는 simulation trajectory 로, 같은 과제의 시연끼리 일관되면 된다'
+        - '사람이 VR 로 조종한 시연에 noise 를 섞어 늘린 데이터라서, 실제 과제의 시연이 먼저 있어야 한다'
+        - '물리적으로 가능한 잡기만 골라 남긴 trajectory 라서, 실제로 잡을 수 없는 자세는 모두 버린다'
+      answer: 1
+      explanation: |
+        pseudo-demonstration 은 simulation 에서 물체 위나 근처에 waypoint 를 정하고(절반은 잡기 같은 동작을 닮게, 절반은 완전히 무작위로) gripper 가 그 순서를 따라가게 만든 trajectory 다. 물체
+        자리를 바꿔 같은 waypoint 순서를 다시 따라가면 같은 pseudo-task 의 시연이 여러 개 생긴다. 시험할 과제를 옮긴 것이 아니고 사람 시연도
+        필요 없으며, 잡을 수 있는지나 팔이 갈 수 있는지는 확인하지 않는다.
+    - question: |
+        pseudo-demonstration 이 실제로 쓸모 있는 작업이 아닌데도 in-context imitation learning 의 학습에 쓸 수 있는 이유는 무엇인가?
+      choices:
+        - '실행할 때 실제 과제의 시연으로 weight 를 다시 학습하므로, 처음 학습의 과제는 상관없기 때문이다'
+        - 'simulation 의 물체가 실제 물체와 모양이 똑같아서, 의미 없는 동작도 실제 과제로 옮겨지기 때문이다'
+        - '학습 예시마다 과제를 같게 두어서, network 가 한 가지 동작을 아주 정확히 외우게 하기 때문이다'
+        - 'weight 에는 과제가 아니라 시연을 읽는 법이 담기면 되므로, 시연끼리 같은 일을 하면 충분하기 때문이다'
+      answer: 3
+      explanation: |
+        in-context imitation learning 의 weight 는 특정 과제가 아니라 시연을 읽고 action 을 알아내는 법을 담는다. 그래서 학습용 과제는 쓸모 있는
+        작업일 필요가 없고, context 의 시연과 정답 시연이 같은 일을 하기만 하면 된다. 실행할 때는 weight 를 고치지 않고, ShapeNet 물체는 실제
+        물체와 모양이 다르며, 학습 예시마다 과제가 달라야 시연을 읽는 법을 배운다.
+    - question: |
+        pseudo-demonstration 으로 학습 예시 하나를 만드는 방법으로 옳은 것은 무엇인가?
+      choices:
+        - '같은 pseudo-task 의 시연 N 개 중 N − 1 개를 context 로 넣고, 남은 시연 하나의 action 을 정답으로 쓴다'
+        - '서로 다른 pseudo-task 의 시연을 섞어 context 로 넣고, 그중 아무 시연의 action 을 골라 정답으로 쓴다'
+        - '시연 하나의 앞부분을 context 로 넣고, 같은 시연의 마지막 action 하나만 떼어 내서 정답으로 쓴다'
+        - 'context 없이 관측과 action 의 쌍만 쓰고, 시연을 읽는 법은 실행할 때 들어온 시연에서 따로 배운다'
+      answer: 0
+      explanation: |
+        한 pseudo-task 의 시연 N 개에서 N − 1 개를 context 로, 남은 하나의 action 을 정답으로 쓴다. 정답 시연은 context 와 같은 일을 하지만
+        물체 자리가 달라서, network 는 context 를 읽어 지금 장면에 맞는 action 을 내야 한다. 서로 다른 과제를 섞으면 context 가 정답과 맞지 않고,
+        context 없이 학습하면 behavior cloning 이 되며, 실행할 때는 학습하지 않는다.
+
+- topic: context-design
+  title: 시연의 수·길이와 새 물체
+  section: 시연-수와-새-물체
+  variants:
+    - question: |
+        시험하는 물체가 시연과 같고 위치만 바뀔 때와, 모양이 다른 새 물체일 때 in-context imitation learning 에서 시연 수의 효과는 어떻게 다른가?
+      choices:
+        - '위치만 바뀌면 시연 2 개쯤에서 더 오르지 않지만, 새 물체에서는 모양이 다른 시연을 늘릴수록 크게 오른다'
+        - '위치만 바뀔 때는 시연을 늘릴수록 계속 오르고, 새 물체에서는 시연 수와 상관없이 성공률이 같게 나온다'
+        - '두 경우 모두 시연 하나가 가장 좋고, 시연을 늘리면 정보가 서로 섞여서 성공률이 점점 떨어지게 된다'
+        - '두 경우 모두 시연 수는 상관이 없고, 시연을 몇 개의 waypoint 로 줄여 넣는지만 성공률을 바꾼다'
+      answer: 0
+      explanation: |
+        같은 물체를 위치만 바꿔 시험하면 시연 2 개로 과제가 정해져서 그 뒤로는 거의 오르지 않는다. 모양이 다른 새 물체에서는 시연 하나로
+        어느 부분의 관계가 중요한지 가를 수 없어서, 모양이 서로 다른 시연을 늘릴수록 성공률이 크게 오른다(논문에서 1 개 40% → 4 개 90%).
+        시연을 늘린다고 성공률이 떨어지지는 않았고, waypoint 수와 시연 수는 둘 다 성공률을 바꾼다.
+    - question: |
+        in-context imitation learning 에서 시연을 끝 상태 waypoint 하나로만 넣으면 성공률이 크게 떨어지는 이유는 무엇인가?
+      choices:
+        - 'waypoint 가 하나면 graph 의 node 가 너무 적어서 network 가 계산을 시작할 수 없기 때문이다'
+        - '끝 상태에서는 gripper 가 닫혀 있어서 network 가 처음부터 gripper 를 닫은 채 움직이기 때문이다'
+        - 'waypoint 를 줄이면 denoising 단계도 하나로 함께 줄어서 정답들의 평균을 내기 때문이다'
+        - '어디로 가야 하는지는 알려도 어떻게 가는지는 알려 주지 않는데, weight 에는 과제가 없기 때문이다'
+      answer: 3
+      explanation: |
+        weight 에 과제가 들어 있지 않으므로 과제를 어떻게 하는지는 시연만 알려 준다. 끝 상태 하나는 목표 자리만 보여 주고 거기까지 가는 방법은
+        보여 주지 않아서, 논문의 RLBench 과제 24 개 평균 성공률이 71%p 떨어졌다. node 가 적어도 계산은 되고, 끝 상태의 gripper 상태를 그대로 따라 하는 규칙은 없으며,
+        waypoint 수와 denoising 단계 수는 서로 관계가 없다.
+    - question: |
+        in-context imitation learning 으로 처음 보는 머그잔을 접시 위에 놓게 하려 한다. context 에 넣을 시연을 고르는 방법으로 가장 알맞은 것은?
+      choices:
+        - '같은 머그잔 하나로 같은 자리에서 여러 번 보여 줘서, 동작을 흔들림 없이 똑같이 반복하게 한다'
+        - '모양이 서로 다른 머그잔 여러 개로 보여 줘서, 시연 사이에 늘 같은 관계만 남게 한다'
+        - '시연은 하나만 넣되 waypoint 를 아주 많이 넣어서, 손잡이의 자리를 아주 자세히 알려 준다'
+        - '시연 대신 다 놓인 결과의 끝 상태 하나만 넣어서, 동작은 network 가 스스로 정하게 둔다'
+      answer: 1
+      explanation: |
+        시연 하나로는 새 머그잔의 어느 부분을 접시에 맞춰야 하는지 가를 수 없다. 모양이 다른 머그잔 여러 개로 보여 주면 시연마다 달라지는 것은
+        버려지고 늘 같은 관계만 남는다. 같은 머그잔을 반복하면 모양 차이를 알려 주지 못하고, waypoint 를 늘려도 머그잔 하나의 정보뿐이며, 끝
+        상태만 넣으면 어떻게 움직일지를 알려 주지 않는다.
+
+- topic: other-inputs
+  title: 다른 몸의 시연과 language
+  section: 실물-실험과-다른-입력
+  variants:
+    - question: |
+        Instant Policy 가 사람 손으로 보여 준 시연도 context 로 쓸 수 있는 이유는 무엇인가?
+      choices:
+        - '관측에 로봇 몸의 점이 없고 로봇 상태가 gripper 자세뿐이라, 손 자세를 gripper 자세로 바꾸면 되기 때문이다'
+        - '사람 손의 영상을 그대로 입력으로 받아서, 손가락 관절을 로봇 관절로 network 가 알아서 옮기기 때문이다'
+        - '학습 데이터에 사람 손의 시연이 많이 들어 있어서, 손과 로봇의 차이를 이미 배워 두었기 때문이다'
+        - '시연은 waypoint 의 끝 상태만 쓰므로, 누가 어떤 몸으로 시연했는지는 결과에 영향을 주지 않기 때문이다'
+      answer: 0
+      explanation: |
+        Instant Policy 의 관측은 물체의 segmented point cloud 와 gripper 의 자세·열림 상태뿐이고 로봇 몸의 점은 들어가지 않는다. 그래서 손의
+        관절 위치에서 gripper 자세를 정하는 대응만 있으면 사람 손의 시연이 로봇 시연과 같은 모양이 된다. 영상을 그대로 받지 않고, 기본 학습 데이터는
+        simulation 의 pseudo-demonstration 이며, 시연의 끝 상태만 쓰지도 않는다.
+    - question: |
+        Instant Policy 를 시연 없이 지시문만으로 실행하게 만든 방법은 무엇인가?
+      choices:
+        - '지시문을 시연 trajectory 로 바꾸는 language model 을 따로 만들고, 만든 시연을 context 로 넣었다'
+        - '지시문이 달린 시연 수천 개를 모아, network 전체를 처음부터 지시문을 받도록 다시 학습했다'
+        - '시연과 관측의 정보가 모이는 현재 gripper node 의 값을 지시문과 관측만으로 흉내 내도록 학습했다'
+        - '지시문의 단어마다 미리 정한 waypoint 를 붙여 두고, 지시문에 맞는 waypoint 를 골라 실행했다'
+      answer: 2
+      explanation: |
+        network 의 둘째 부분이 시연과 관측의 정보를 현재 gripper node 에 모으고, 셋째 부분이 그 값으로 action 을 만든다. 저자들은 이 모인 값을
+        지시문과 관측만으로 흉내 내는 network 를 지시문이 달린 작은 dataset 으로 학습하고, 셋째 부분은 그대로 썼다. 시연을 만들어 넣거나
+        network 전체를 다시 학습하지 않았고, 단어마다 waypoint 를 정해 둔 규칙도 없다.
+    - question: |
+        Instant Policy 를 지시문으로 실행했더니 미는 동작은 맞는데 물체의 엉뚱한 자리를 미는 실패가 나왔다. 논문이 짐작한 원인은 무엇인가?
+      choices:
+        - '지시문을 숫자로 바꾸는 계산이 느려서 action 이 늦게 나오고, 그 사이 물체가 움직였기 때문이다'
+        - '지시문을 쓰면 denoising 단계가 1 로 줄어서, action 이 두 정답의 평균 쪽으로 끌렸기 때문이다'
+        - '지시문에는 몇 번 밀지가 적혀 있지 않아서, 같은 동작을 끝없이 반복하다 자리가 어긋났기 때문이다'
+        - '관측이 point cloud 의 모양 정보뿐이라, 지시문이 가리키는 부분을 의미로 구별할 정보가 없기 때문이다'
+      answer: 3
+      explanation: |
+        Instant Policy 의 물체 node 는 point cloud 의 모양만 요약하고 색이나 의미 정보가 없다. 그래서 지시문이 가리키는 물체나 부분을 장면에서
+        찾아 맞추기 어렵고, 동작은 맞아도 자리가 틀린다. 저자들은 vision 모델의 feature 를 더하고 지시문 dataset 을 늘리면 나아질 것으로 보았다.
+        계산 지연, denoising 단계 수, 반복 횟수는 논문이 든 원인이 아니다.

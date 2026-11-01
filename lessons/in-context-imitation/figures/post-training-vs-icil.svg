@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" font-family="Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif">
+  <title>과제를 배우는 두 방식. 위의 post-training 은 과제마다 시연 50 개를 모으고 약 5 시간 학습해 weight 를 새로 만든 뒤 실행한다. 아래의 in-context imitation learning 은 여러 과제로 한 번 학습한 weight 를 고정해 두고, 새 과제의 시연 1 ~ 2 개를 입력에 넣자마자 실행한다</title>
+  <defs><marker id="arrow-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/></marker><marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7cb4d8"/></marker><marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7fc4a2"/></marker><marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d6aa62"/></marker><marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d88b8b"/></marker><marker id="arrow-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a99ad6"/></marker><marker id="arrow-text" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e2e8f0"/></marker><marker id="arrow-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#cf96b8"/></marker></defs>
+  <rect x="1" y="1" width="758" height="358" rx="12" fill="#0b1220" stroke="#1e293b"/>
+  <text x="24.0" y="34.0" fill="#d6aa62" font-size="14" text-anchor="start" font-weight="600">post-training: 과제마다 weight 를 새로 만든다</text>
+  <rect x="24.0" y="50.0" width="160.0" height="56.0" rx="8" fill="#111a2e" stroke="#d6aa62" stroke-width="1.5"/>
+  <text x="104.0" y="74.0" fill="#e2e8f0" font-size="12" text-anchor="middle">과제 A 의 시연</text>
+  <text x="104.0" y="94.0" fill="#94a3b8" font-size="12" text-anchor="middle">50 개 수집</text>
+  <rect x="204.0" y="50.0" width="160.0" height="56.0" rx="8" fill="#111a2e" stroke="#d6aa62" stroke-width="1.5"/>
+  <text x="284.0" y="74.0" fill="#e2e8f0" font-size="12" text-anchor="middle">학습</text>
+  <text x="284.0" y="94.0" fill="#94a3b8" font-size="12" text-anchor="middle">약 5 시간</text>
+  <rect x="384.0" y="50.0" width="160.0" height="56.0" rx="8" fill="#111a2e" stroke="#d6aa62" stroke-width="1.5"/>
+  <text x="464.0" y="74.0" fill="#e2e8f0" font-size="12" text-anchor="middle">weight A</text>
+  <text x="464.0" y="94.0" fill="#94a3b8" font-size="12" text-anchor="middle">과제 A 전용</text>
+  <rect x="564.0" y="50.0" width="160.0" height="56.0" rx="8" fill="#111a2e" stroke="#d6aa62" stroke-width="1.5"/>
+  <text x="644.0" y="74.0" fill="#e2e8f0" font-size="12" text-anchor="middle">실행</text>
+  <text x="644.0" y="94.0" fill="#94a3b8" font-size="12" text-anchor="middle">과제 A</text>
+  <line x1="186.0" y1="78.0" x2="202.0" y2="78.0" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow-gray)"/>
+  <line x1="366.0" y1="78.0" x2="382.0" y2="78.0" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow-gray)"/>
+  <line x1="546.0" y1="78.0" x2="562.0" y2="78.0" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow-gray)"/>
+  <text x="24.0" y="130.0" fill="#94a3b8" font-size="12" text-anchor="start">과제 B 가 생기면 시연 50 개 수집 → 학습 약 5 시간 → weight B 를 다시 만든다. 과제 10 개면 시연 500 개, 학습 약 50 시간</text>
+  <line x1="24" y1="152" x2="736" y2="152" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="24.0" y="182.0" fill="#7fc4a2" font-size="14" text-anchor="start" font-weight="600">in-context imitation learning: weight 는 한 번만 학습하고 고정한다</text>
+  <rect x="24.0" y="198.0" width="200.0" height="56.0" rx="8" fill="#111a2e" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="124.0" y="222.0" fill="#e2e8f0" font-size="12" text-anchor="middle">여러 과제로 한 번 학습</text>
+  <text x="124.0" y="242.0" fill="#94a3b8" font-size="12" text-anchor="middle">(Instant Policy: simulation)</text>
+  <rect x="284.0" y="198.0" width="190.0" height="120.0" rx="8" fill="#111a2e" stroke="#7fc4a2" stroke-width="1.5"/>
+  <text x="379.0" y="244.0" fill="#7fc4a2" font-size="13" text-anchor="middle" font-weight="600">고정된 weight</text>
+  <text x="379.0" y="266.0" fill="#94a3b8" font-size="12" text-anchor="middle">시연과 관측을 함께 읽는다</text>
+  <line x1="226.0" y1="226.0" x2="282.0" y2="226.0" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow-gray)"/>
+  <rect x="24.0" y="266.0" width="200.0" height="52.0" rx="8" fill="#111a2e" stroke="#7cb4d8" stroke-width="1.5"/>
+  <text x="124.0" y="288.0" fill="#e2e8f0" font-size="12" text-anchor="middle">새 과제의 시연 1 ~ 2 개</text>
+  <text x="124.0" y="306.0" fill="#94a3b8" font-size="12" text-anchor="middle">= context (입력)</text>
+  <line x1="226.0" y1="292.0" x2="282.0" y2="292.0" stroke="#7cb4d8" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <rect x="534.0" y="198.0" width="200.0" height="56.0" rx="8" fill="#111a2e" stroke="#7fc4a2" stroke-width="1.5"/>
+  <text x="634.0" y="222.0" fill="#e2e8f0" font-size="12" text-anchor="middle">action 8 개 실행</text>
+  <text x="634.0" y="242.0" fill="#94a3b8" font-size="12" text-anchor="middle">학습 없이 바로</text>
+  <line x1="476.0" y1="226.0" x2="532.0" y2="226.0" stroke="#7fc4a2" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <rect x="534.0" y="266.0" width="200.0" height="52.0" rx="8" fill="#111a2e" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="634.0" y="290.0" fill="#e2e8f0" font-size="12" text-anchor="middle">새 관측</text>
+  <text x="634.0" y="308.0" fill="#94a3b8" font-size="12" text-anchor="middle">다시 읽고 다시 낸다</text>
+  <line x1="634.0" y1="256.0" x2="634.0" y2="264.0" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="532.0" y1="292.0" x2="476.0" y2="292.0" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow-gray)"/>
+  <text x="380.0" y="344.0" fill="#94a3b8" font-size="12" text-anchor="middle">과제 B 가 생기면 입력의 시연만 바꿔 넣는다. weight 를 고치는 학습은 없다</text>
+</svg>

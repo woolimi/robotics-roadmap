@@ -17,16 +17,25 @@ frontmatter 를 읽어 선수 관계 지도를 그린다. 공부하는 법은 [R
    미분·gradient, 확률·Gaussian, ROS 2, 좌표 변환, PID, 카메라 geometry)가 가르치는 내용은 다시 가르치지 않고 한두 문장으로 짚는다
 2. 근거 자료를 직접 연다. 논문 원문(arXiv), 공식 문서, 소스 코드(GitHub)에서 방법과 숫자를 확인한다. 라이브러리의 기본값은
    소스 코드에서 확인한다
-3. 본문을 쓴다. 서론 → 학습 목표 → 개념마다 한 절(직관 → 그림 → 숫자 예시 → 실제 로봇·논문·제품 사례) → 정리 → 참고 자료 순서이고,
-   일반 식·유도·긴 손계산은 "심화" 블록에 접는다. 심화 밖 본문은 15k ~ 22k 자, 전체는 20k ~ 28k 자 안팎이다
-4. 그림을 그린다. SVG 로 `figures/` 에 두고 [PID Control 의 그림](lessons/pid-control/figures/control-loop.svg) 과 같은 어두운 카드와
+3. outline 을 먼저 쓴다. 강의 전체를 한 문장으로 요약하고, 절마다 "절 | 앞 절이 남긴 문제 | 이 절의 해결 | 대가·한계와 숫자 하나 | 근거"
+   를 한 줄씩 적은 표를 만든다. 근거 칸에는 숫자마다 논문의 절·표 번호, 공식 문서·소스 파일, 직접 계산 가운데 어디서 왔는지 적는다.
+   outline 은 scratchpad 에 두고 리포에 넣지 않는다
+4. 본문을 쓴다. 서론 → 학습 목표 → 개념마다 한 절 → 정리 → 참고 자료 순서이고, 일반 식·유도·긴 손계산은 "심화" 블록에 접는다. 절은
+   outline 대로 앞 절이 남긴 문제 → 해결 → 그림 → 숫자 예시 → 실제 로봇·논문·제품 사례 → 대가·한계 순서로 쓴다. 심화 밖 본문은
+   15k ~ 22k 자, 전체는 20k ~ 28k 자 안팎이다
+5. 그림을 그린다. SVG 로 `figures/` 에 두고 [PID Control 의 그림](lessons/pid-control/figures/control-loop.svg) 과 같은 어두운 카드와
    색(배경 `#0b1220`, 글자 `#e2e8f0`, 강조 `#7cb4d8`·`#7fc4a2`·`#d6aa62`·`#d88b8b`·`#a99ad6`·`#cf96b8`, 보조 `#94a3b8`)을 쓴다. 그림을 만드는
    script 는 리포에 넣지 않는다. 넣기 전에 PNG 로 렌더해(headless Chrome `--headless=new --screenshot`) 글자 겹침과 잘림을 눈으로 확인하고,
    그림 속 숫자를 본문 예시와 맞춘다
-5. 퀴즈를 쓴다. [lessons/kalman-filter/quiz.yaml](lessons/kalman-filter/quiz.yaml) 과 같은 모양으로 topic 6 ~ 8개, topic 마다 variant
+6. 퀴즈를 쓴다. [lessons/kalman-filter/quiz.yaml](lessons/kalman-filter/quiz.yaml) 과 같은 모양으로 topic 6 ~ 8개, topic 마다 variant
    3개다
-6. 형식을 검사한다: `cd site && npm test`
-7. 문장을 따로 검수한다. 다 쓴 뒤 강의 파일과 [docs/korean-prose.md](docs/korean-prose.md) 만 놓고 문장만 고치는 단계를 한 번 더
+7. 형식을 검사한다: `cd site && npm test`
+8. 사실을 따로 검증한다. 강의를 쓴 context 는 자기 강의를 판정하지 않고, 새 subagent 가 강의 파일·outline·근거 자료 원문만 보고 검증한다.
+   숫자와 "저자들은 ~ 라고 적었다" 같은 주장은 원문에서 찾고, 논문이 붙인 조건(dataset, metric, hardware, 표 번호, 상대값인지 절대값인지)이
+   빠지지 않았는지 보고, 표와 예시의 계산은 다시 계산하고, 같은 강의 안에서 서로 어긋나는 문장을 찾는다. 결과는
+   "줄 | 강의 서술 | 원문 근거 | 판정(ok / 조건 누락 / 오해 소지 / 틀림) | 고칠 안" 표로 받는다. subagent 는 파일을 고치지 않고, 지적을 고친 뒤
+   고친 항목만 다시 검증해 모두 ok 가 될 때까지 되풀이한다
+9. 문장을 따로 검수한다. 다 쓴 뒤 강의 파일과 [docs/korean-prose.md](docs/korean-prose.md) 만 놓고 문장만 고치는 단계를 한 번 더
    거친다(가능하면 새 subagent 로). 사실·숫자·표·frontmatter·`](#slug)` 로 링크된 제목은 건드리지 않는다
 
 ## 사실 확인
