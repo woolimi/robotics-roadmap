@@ -49,6 +49,12 @@ describe('curriculum', () => {
     }
   })
 
+  it('gives each explainer video to one lesson only', () => {
+    const videos = c.lessons.flatMap((p) => (p.video ? [p.video] : []))
+    expect(videos.length).toBeGreaterThan(0)
+    expect(new Set(videos).size, 'a video is attached to two lessons').toBe(videos.length)
+  })
+
   it('every lesson ends with a quiz', () => {
     for (const p of c.lessons) expect(existsSync(join(ROOT, p.id, 'quiz.yaml')), `${p.id}/quiz.yaml`).toBe(true)
   })

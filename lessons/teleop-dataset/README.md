@@ -5,6 +5,7 @@ branch: imitation
 requires: [mujoco-sim, behavior-cloning]
 hours: 2
 summary: 사람이 조종한 시연을 학습 데이터로 남기는 방법. leader-follower·VR·spacemouse 입력 장치, frame 에 담는 사진·state·action·timestamp, 기록 주기와 시각 맞추기, LeRobotDataset 의 Parquet·MP4·meta, 시연의 품질과 수
+video: https://www.youtube.com/watch?v=57L3o4DuB3k
 papers:
   - title: "RoboTurk: A Crowdsourcing Platform for Robotic Skill Learning through Imitation"
     authors: Ajay Mandlekar et al.

@@ -5,6 +5,7 @@ branch: imitation
 requires: [pytorch-mlp]
 hours: 2
 summary: 시연의 (관측, action) 쌍을 정답 삼아 policy 를 supervised learning 으로 배우는 방법. 시연 쌍의 MSE, compounding error 와 distribution shift, action head 와 normalization, end-to-end 의 조건, multimodal 시연의 평균과 봉우리 고르기, LeRobot 의 SO-101 시연
+video: https://www.youtube.com/watch?v=4eeRQRvNJw8
 papers:
   - title: "ALVINN: An Autonomous Land Vehicle in a Neural Network"
     authors: Dean A. Pomerleau

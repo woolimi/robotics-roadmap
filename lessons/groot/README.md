@@ -5,6 +5,7 @@ branch: vla
 requires: [pi0]
 hours: 2
 summary: humanoid 조종 데이터가 88 시간뿐인 문제를 사람 영상·생성 영상·simulation 을 쌓은 data pyramid 로 다루는 GR00T N1. VLM(System 2)과 flow matching diffusion transformer(System 1)의 cross-attention 연결, 로봇별 encoder·decoder, action 없는 영상의 latent action, 결과와 N1.5 ~ N1.7 의 변화
+video: https://www.youtube.com/watch?v=Vg3Vtl-9yO8
 papers:
   - title: "Latent Action Pretraining from Videos"
     authors: Seonghyeon Ye et al.

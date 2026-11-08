@@ -132,6 +132,10 @@ robotics-roadmap/
 [CONTRIBUTING.md](CONTRIBUTING.md) 에 있고, 문장을 다듬을 때 고치는 패턴은 [docs/korean-prose.md](docs/korean-prose.md) 에
 있습니다. Claude Code 로 강의를 쓰면 리포의 [CLAUDE.md](CLAUDE.md) 를 자동으로 읽어 같은 작업 순서와 사실 확인 규칙을 따릅니다. PR 을 올리기 전에 `site/` 에서 `npm test` 로 형식 검사를 통과하는지 확인해 주세요.
 
+## Special Thanks
+
+- [Sunbin Kim](https://github.com/SunandBean): [논문 해설 영상](https://www.youtube.com/@paper2videoai) 제공, [paper2video](https://github.com/SunandBean/paper2video) 제작자
+
 ## 라이선스
 
 - 강의(`lessons/`)와 문서 이미지(`docs/`): [CC BY-NC-SA 4.0](lessons/LICENSE.md). 출처를 밝히면 비영리 목적으로 자유롭게 쓰고 고칠 수

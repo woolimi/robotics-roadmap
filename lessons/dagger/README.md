@@ -5,6 +5,7 @@ branch: imitation
 requires: [behavior-cloning]
 hours: 2
 summary: policy 가 직접 간 상태에서 expert 에게 정답을 물어 데이터에 더하는 반복. β 로 섞는 운전, 실수가 T² 대신 T 에 비례해 쌓이는 이유, 사람이 위험할 때만 넘겨받는 HG-DAgger·개입 수집
+video: https://www.youtube.com/watch?v=8bc9_iqZtyg
 papers:
   - title: "A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning"
     authors: Stéphane Ross, Geoffrey J. Gordon, J. Andrew Bagnell

@@ -19,6 +19,7 @@
 | `hours` | 강의를 읽고 퀴즈를 푸는 데 드는 예상 시간 |
 | `summary` | 지도에 보이는 한 줄 설명 |
 | `papers` | 강의가 다루는 논문(`title`·`authors`·`year`, 선택으로 `url`). 오래된 것부터 `year` 순서로 적는다 |
+| `video` | 선택. 강의 창 맨 위에 넣을 논문 해설 YouTube 영상의 주소(`https://www.youtube.com/watch?v=<id>`). 강의 하나에 영상 하나 |
 
 ## 강의 본문 규칙
 

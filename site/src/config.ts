@@ -25,6 +25,7 @@ export const CONFIG = {
 
   lesson: {
     sectionIdPrefix: 'sec-', // a lesson heading's id is this plus its GitHub slug (lesson-render.ts)
+    videoEmbed: 'https://www.youtube-nocookie.com/embed/', // + the frontmatter video's id; the player sets no cookies until it plays
   },
 
   // lesson panel on wide screens; its left edge drags to resize

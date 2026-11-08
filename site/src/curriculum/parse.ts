@@ -70,6 +70,16 @@ function parsePapers(value: unknown, where: string): Paper[] {
   })
 }
 
+// a YouTube watch URL, the form a reader can open from the frontmatter on GitHub
+const YOUTUBE_WATCH = /^https:\/\/www\.youtube\.com\/watch\?v=([A-Za-z0-9_-]{11})$/
+
+function parseVideo(value: unknown, where: string): string | undefined {
+  if (value === undefined) return undefined
+  const id = YOUTUBE_WATCH.exec(str(value, where, 'video'))?.[1]
+  if (!id) fail(where, '"video" must be a URL like https://www.youtube.com/watch?v=<11-character id>')
+  return id
+}
+
 /** A lesson README without its frontmatter. */
 export const bodyOf = (source: string) => source.replace(FRONTMATTER, '')
 
@@ -96,6 +106,7 @@ export function parseLesson(dir: string, source: string): Lesson {
     hours: fm.hours,
     summary: str(fm.summary, path, 'summary'),
     papers: parsePapers(fm.papers, path),
+    video: parseVideo(fm.video, path),
     body: source.slice(match[0].length),
     path,
   }

@@ -5,6 +5,7 @@ branch: vla
 requires: [rt1, clip, gpt]
 hours: 2
 summary: 인터넷의 사진과 글로 학습한 VLM 이 로봇 action 을 token 으로 쓰게 만든 RT-2·OpenVLA. 256 칸 action token, co-fine-tuning 과 일반화의 범위, OpenVLA 의 구조와 LoRA fine-tuning, 정밀도·속도·한 step 출력의 한계
+video: https://www.youtube.com/watch?v=AcnUCUkcPiQ
 papers:
   - title: "LoRA: Low-Rank Adaptation of Large Language Models"
     authors: Edward J. Hu et al.

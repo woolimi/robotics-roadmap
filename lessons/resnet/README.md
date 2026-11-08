@@ -5,6 +5,7 @@ branch: vision
 requires: [cnn]
 hours: 2
 summary: 층을 깊게 쌓은 CNN 이 학습 사진조차 덜 맞히는 degradation 을 입력을 출력에 더하는 residual connection 으로 푼 ResNet. batch normalization, BasicBlock 과 bottleneck block, ResNet-18·50 의 구조, pretrained backbone 과 fine-tuning, ACT·Diffusion Policy 의 ResNet-18 encoder
+video: https://www.youtube.com/watch?v=36bXlgeAu48
 papers:
   - title: "Deep Residual Learning for Image Recognition"
     authors: Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun

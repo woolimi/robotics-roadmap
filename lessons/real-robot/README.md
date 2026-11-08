@@ -5,6 +5,7 @@ branch: imitation
 requires: [teleop-dataset, act, dagger]
 hours: 3
 summary: 학습한 policy 를 실물 팔에서 실행하는 방법. 제어 주기와 추론 시간, action chunk queue 와 비동기 추론, 노트북에서 돌릴 수 있는 모델 크기, calibration·카메라 위치의 일관성, 안전 장치, trial 로 재는 성공률과 실패 분석
+video: https://www.youtube.com/watch?v=_epOiQ_dHyg
 papers:
   - title: "Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware"
     authors: Tony Z. Zhao, Vikash Kumar, Sergey Levine, Chelsea Finn

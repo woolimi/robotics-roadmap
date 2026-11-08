@@ -5,6 +5,7 @@ branch: vla
 requires: [vla-tokens, flow-matching, act]
 hours: 2
 summary: PaliGemma 가 사진과 지시문을 읽고 작은 action expert 가 flow matching 10 step 으로 1 초 분량의 action chunk 50 개를 만드는 π0 의 구조, blockwise attention mask, KV cache 와 chunk 실행, pretraining 과 fine-tuning, 실험 결과, π0-FAST
+video: https://www.youtube.com/watch?v=UTycKSu3a7Q
 papers:
   - title: "π0: A Vision-Language-Action Flow Model for General Robot Control"
     authors: Kevin Black et al.

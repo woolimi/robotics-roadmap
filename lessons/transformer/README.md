@@ -5,6 +5,7 @@ branch: language
 requires: [pytorch-mlp, tokenizer]
 hours: 3
 summary: token 들이 query·key·value 로 서로를 참고하는 self-attention 과 √d 로 나누는 scaling, multi-head, positional encoding, residual·LayerNorm 으로 쌓는 block, causal mask, ACT 의 Transformer encoder-decoder
+video: https://www.youtube.com/watch?v=3ssRTdtPejs
 papers:
   - title: "Neural Machine Translation by Jointly Learning to Align and Translate"
     authors: Dzmitry Bahdanau, Kyunghyun Cho, Yoshua Bengio

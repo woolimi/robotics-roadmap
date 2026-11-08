@@ -58,6 +58,8 @@ export interface Lesson {
   hours: number
   summary: string
   papers: Paper[]
+  /** YouTube id of the explainer video shown at the top of the lesson, from the frontmatter's `video` watch URL */
+  video?: string
   /** markdown body without frontmatter */
   body: string
   /** repo-relative path of the subject file */

@@ -5,6 +5,7 @@ branch: imitation
 requires: [rt1, ddpm, act]
 hours: 2
 summary: 관측을 조건으로 noise 에서 앞으로 몇 step 의 action 을 한 덩어리로 걷어 내는 policy. 관측 조건 denoising, prediction·action horizon 과 receding horizon, CNN·transformer denoiser, DDIM, PushT 결과
+video: https://www.youtube.com/watch?v=4If_PeUrwQk
 papers:
   - title: "Planning with Diffusion for Flexible Behavior Synthesis"
     authors: Michael Janner, Yilun Du, Joshua B. Tenenbaum, Sergey Levine

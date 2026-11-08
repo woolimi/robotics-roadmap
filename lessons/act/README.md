@@ -5,6 +5,7 @@ branch: imitation
 requires: [behavior-cloning, vae, transformer, resnet]
 hours: 3
 summary: 관측 한 번에 앞으로 100 step 의 action 을 묶어 내는 action chunking, 겹치는 chunk 를 섞는 temporal ensembling, 시연의 style 을 담는 CVAE 의 z, ALOHA 와 LeRobot 의 ACT 설정
+video: https://www.youtube.com/watch?v=0x0uI3W_bXk
 papers:
   - title: "End-to-End Object Detection with Transformers"
     authors: Nicolas Carion, Francisco Massa, Gabriel Synnaeve, Nicolas Usunier, Alexander Kirillov, Sergey Zagoruyko

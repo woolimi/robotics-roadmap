@@ -5,6 +5,7 @@ branch: imitation
 requires: [behavior-cloning, transformer, resnet]
 hours: 2
 summary: action 의 차원마다 범위를 칸 256 개로 나눠 분류로 학습하는 RT-1. cross-entropy 가 지키는 두 봉우리, binning 오차, 지시를 섞는 FiLM, token 을 줄이는 TokenLearner, 3 Hz 계산 제한, 시연 13 만 개로 얻은 일반화와 그 한계
+video: https://www.youtube.com/watch?v=C5kJmtMlzYw
 papers:
   - title: "FiLM: Visual Reasoning with a General Conditioning Layer"
     authors: Ethan Perez, Florian Strub, Harm de Vries, Vincent Dumoulin, Aaron Courville

@@ -134,6 +134,19 @@ export const LessonPanel = memo(function LessonPanel({ curriculum: c, progressFi
             {formatHours(lesson.hours)}
           </p>
 
+          {lesson.video && (
+            <div className="lesson-video">
+              <iframe
+                src={CONFIG.lesson.videoEmbed + lesson.video}
+                title={`${lesson.title} 논문 해설 영상`}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+          )}
+
           <StatusCard
             progressFile={progressFile}
             lessonId={lessonId}
