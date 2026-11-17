@@ -5,6 +5,7 @@ branch: frontier
 requires: [diffusion-policy, pi0]
 hours: 2
 summary: flow matching 의 Euler step 을 network 한 번으로 줄이는 방법. 순간 속도 대신 평균 속도를 배우는 원리, reflow·distillation·consistency model 의 학습, shortcut model·MeanFlow 의 한 단계 학습, 로봇 policy 의 계산 시간과 성공률
+video: https://www.youtube.com/watch?v=Go8qfm1tyDY
 papers:
   - title: "Flow Straight and Fast: Learning to Generate and Transfer Data with Rectified Flow"
     authors: Xingchao Liu, Chengyue Gong, Qiang Liu

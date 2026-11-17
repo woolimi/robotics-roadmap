@@ -5,6 +5,7 @@ branch: frontier
 requires: [vae, policy-gradient, off-policy]
 hours: 3
 summary: 행동을 넣으면 다음 장면을 예측하는 model 을 배워 그 안에서 행동을 미리 비교하는 방법. latent dynamics, CEM·MPC planning, Dreamer 의 상상 속 policy 학습, 예측 오차의 누적, Genie·Cosmos·V-JEPA 2 같은 영상 world model
+video: https://www.youtube.com/watch?v=nJHn_GdY7po
 papers:
   - title: "World Models"
     authors: David Ha, Jürgen Schmidhuber

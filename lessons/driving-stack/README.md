@@ -5,6 +5,7 @@ branch: driving
 requires: [path-tracking, lidar-perception]
 hours: 2
 summary: 센서 입력을 핸들·브레이크 명령으로 바꾸는 자율주행차의 module 구성. NDT localization, Lanelet2 지도, prediction·planning·control, latency budget, SAE level 과 ODD, end-to-end
+video: https://www.youtube.com/watch?v=LEnR8GL6sf4
 papers:
   - title: "The Normal Distributions Transform: A New Approach to Laser Scan Matching"
     authors: Peter Biber, Wolfgang Straßer

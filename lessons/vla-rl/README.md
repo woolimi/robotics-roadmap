@@ -5,6 +5,7 @@ branch: frontier
 requires: [pi0, ppo, dagger, off-policy]
 hours: 2
 summary: 시연으로 배운 VLA 를 성공 여부 reward 로 더 학습하는 RL fine-tuning. 시연이 정하는 상한, reward 의 출처, token VLA 와 flow matching VLA 의 확률, on-policy 와 off-policy, 실물 로봇의 비용·안전·사람의 개입
+video: https://www.youtube.com/watch?v=YxQaiVl256g
 papers:
   - title: "Diffusion Policy Policy Optimization"
     authors: Allen Z. Ren et al.

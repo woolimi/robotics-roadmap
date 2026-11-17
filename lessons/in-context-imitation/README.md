@@ -5,6 +5,7 @@ branch: frontier
 requires: [act, diffusion-policy]
 hours: 2
 summary: 시연 한두 개를 입력으로 넣어 학습 없이 새 작업을 하는 in-context imitation learning. 작업마다 하는 post-training 과의 차이, Instant Policy 의 시연·관측·action graph 와 graph diffusion, simulation 의 pseudo-demonstration 으로 배우는 시연 읽는 법, 시연 수와 새 물체, cross-embodiment 와 language, simulation 만으로 학습한 VDA
+video: https://www.youtube.com/watch?v=x716fFwOM3E
 papers:
   - title: "Few-Shot In-Context Imitation Learning via Implicit Graph Alignment"
     authors: Vitalis Vosylius, Edward Johns

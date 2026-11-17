@@ -5,6 +5,7 @@ branch: rl
 requires: [ppo, mujoco-sim, dagger]
 hours: 3
 summary: simulation 에서 학습한 4족 보행 policy 를 실제 로봇에 옮기는 방법. observation·action·reward, reality gap 의 원인, actuator network, domain randomization 범위, observation noise, 지형 curriculum, teacher-student 학습
+video: https://www.youtube.com/watch?v=Jd3dUmpq2Bk
 papers:
   - title: "Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World"
     authors: Josh Tobin et al.
